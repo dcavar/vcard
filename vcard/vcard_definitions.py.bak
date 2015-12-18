@@ -5,7 +5,7 @@ import six
 
 
 def character_range(start, end):
-    return "".join(six.chr(index) for index in range(start, end + 1))
+    return "".join(six.unichr(index) for index in range(start, end + 1))
 
 # Literals, RFC 2426 pages 27, 28
 ALPHA_CHARACTERS = character_range(0x41, 0x5A) + character_range(0x61, 0x7A)
@@ -28,7 +28,7 @@ QUOTE_SAFE_CHARACTERS = \
 SAFE_CHARACTERS = WHITESPACE_CHARACTERS + chr(0x21) + character_range(0x23, 0x2B) + character_range(0x2D, 0x39) + \
     character_range(0x3C, 0x5B) + character_range(0x5D, 0x7E) + NON_ASCII_CHARACTERS
 VALUE_CHARACTERS = WHITESPACE_CHARACTERS + PRINTABLE_CHARACTERS + NON_ASCII_CHARACTERS
-ESCAPED_CHARACTERS = '\\;,nN'
+ESCAPED_CHARACTERS = u'\\;,nN'
 
 # Known property names (RFC 2426 page 4)
 MANDATORY_PROPERTIES = ['BEGIN', 'END', 'FN', 'N', 'VERSION']
